@@ -1,10 +1,10 @@
-name: Kafka Server Extension
+name: Zookeeper Server Extension
 #description: Do something useful.
 metadata:
   status: "preview"
   keywords:
-    - kafka-server-extension
-    - kafka-native
+    - zookeeper-server-extension
+    - zookeeper-native
 #  guide: ...
 #  categories:
 #    - "miscellaneous"

@@ -22,10 +22,10 @@ WORKDIR /work/
 RUN chown 1001 /work \
     && chmod "g+rwX" /work \
     && chown 1001:root /work
-COPY --chown=1001:root target/*-runner /work/kafka
+COPY --chown=1001:root target/*-runner /work/zookeeper
 
 EXPOSE 9092
 USER 1001
 RUN mkdir -p /work/target/log-dir
 
-CMD ["./kafka"]
+CMD ["./zookeeper"]
