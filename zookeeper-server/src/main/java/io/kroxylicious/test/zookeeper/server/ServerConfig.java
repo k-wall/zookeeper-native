@@ -12,6 +12,6 @@ public interface ServerConfig {
     @WithDefault("2181")
     int zookeeperPort();
 
-    Optional<Path> clusterReadyFlagFile();
+    Optional<Path> zookeeperReadyFlagFile();
 
 }

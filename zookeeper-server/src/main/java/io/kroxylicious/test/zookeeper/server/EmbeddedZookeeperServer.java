@@ -22,7 +22,7 @@ public class EmbeddedZookeeperServer implements Closeable {
     static final Logger LOGGER = Logger.getLogger(EmbeddedZookeeperServer.class.getName());
 
     private int zookeeperPort = 0;
-    private Optional<Path> clusterReadyFlagFile = Optional.empty();
+    private Optional<Path> zookeeperReadyFlagFile = Optional.empty();
     private ServerCnxnFactory zooFactory;
     private ZooKeeperServer zooServer;
 
@@ -62,7 +62,7 @@ public class EmbeddedZookeeperServer implements Closeable {
 
             LOGGER.infof("Zookeeper server started in %d ms", System.currentTimeMillis() - start);
 
-            clusterReadyFlagFile.ifPresent(path -> {
+            zookeeperReadyFlagFile.ifPresent(path -> {
                 CompletionStage<Void> awaitCluster = ZookeeperPoller.awaitZookeeperServerReady("localhost:" + zookeeperPort);
                 awaitCluster.thenRunAsync(() -> {
                     try {
@@ -112,8 +112,8 @@ public class EmbeddedZookeeperServer implements Closeable {
         }
     }
 
-    public EmbeddedZookeeperServer withClusterReadyFlagFile(Optional<Path> clusterReadyFlagFile) {
-        this.clusterReadyFlagFile = clusterReadyFlagFile;
+    public EmbeddedZookeeperServer withZookeeperReadyFlagFile(Optional<Path> zookeeperReadyFlagFile) {
+        this.zookeeperReadyFlagFile = zookeeperReadyFlagFile;
         return this;
     }
 

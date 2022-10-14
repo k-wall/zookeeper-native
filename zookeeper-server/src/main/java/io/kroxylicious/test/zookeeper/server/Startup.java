@@ -18,7 +18,7 @@ public class Startup {
     void startup(@Observes StartupEvent event) {
         server = new EmbeddedZookeeperServer()
                 .withZookeeperPort(config.zookeeperPort())
-                .withClusterReadyFlagFile(config.clusterReadyFlagFile());
+                .withZookeeperReadyFlagFile(config.zookeeperReadyFlagFile());
         server.start();
     }
 
